@@ -1,9 +1,11 @@
 <template>
   <div>
-    <router-link :to="{name:'createList'}" class="btn btn-primary">+</router-link>
+    <router-link :to="{name:'createtodo'}" class="btn btn-primary">+</router-link>
     <div v-for="todo in todos" :key="todo.id">
       <div>
         <h2>{{todo.title}}</h2>
+        <p>{{todo.id}}</p>
+        <router-link :to="{path:'edittodo/'+todo.id}" class="btn btn-primary">Edit</router-link>
       </div>
     </div>
   </div>
