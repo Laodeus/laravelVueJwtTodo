@@ -13,7 +13,7 @@ class CreateToDosTable extends Migration
      */
     public function up()
     {
-        Schema::create('todos', function (Blueprint $table) {
+        Schema::create('to_dos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idUsername');
             $table->string('title');
@@ -28,6 +28,6 @@ class CreateToDosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todos');
+        Schema::dropIfExists('to_dos');
     }
 }

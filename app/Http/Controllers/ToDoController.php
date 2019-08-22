@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ToDo;
+use App\Http\Resources\Collection;
 use Illuminate\Http\Request;
-use App\Http\Ressources\Collection;
 
 class ToDoController extends Controller
 {

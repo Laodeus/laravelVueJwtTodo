@@ -12,13 +12,21 @@ import App from './App.vue';
 Vue.use(VueAxios, axios);
 
 import LoginComponent from './components/LoginComponent.vue';
+import HomeComponent from './components/HomeComponent.vue';
 import CreateProjetComponent from './components/CreateProjetComponent.vue';
 import CreateToDoComponent from './components/CreateToDoComponent.vue';
+
 
 const routes = [{
         name: 'login',
         path: '/',
         component: LoginComponent
+    },
+
+    {
+        name: 'home',
+        path: '/home',
+        component: HomeComponent
     },
 
     {
