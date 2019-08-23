@@ -6,6 +6,7 @@
         <h2>{{todo.title}}</h2>
         <p>{{todo.id}}</p>
         <router-link :to="{path:'edittodo/'+todo.id}" class="btn btn-primary">Edit</router-link>
+        <button class="btn btn-danger" @click.prevent="deleteTodo(todo.id)">Delete</button>
       </div>
     </div>
   </div>

@@ -34,4 +34,12 @@ class ToDoController extends Controller
 
       return response()->json('successfully updated');
     }
+    public function delete($id)
+    {
+      $todo = Todo::find($id);
+
+      $todo->delete();
+
+      return response()->json('successfully deleted');
+    }
 }
