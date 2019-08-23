@@ -3,29 +3,30 @@
     <div id="login">
       <h1>Login:</h1>
       <form @submit.prevent="login">
-        <label>Username:</label>
-        <input type="text" alt="username" />
+        <input type="text" v-model="post.email" placeholder="email" />
         <br />
-        <label>Password:</label>
-        <input type="password" alt="password" />
+        <input type="password" v-model="post.password" placeholder="password" />
         <br />
         <input type="submit" alt="envoyer" />
       </form>
     </div>
-
-    <div id="s'inscrire">
-      <h1>Login:</h1>
+    <br />
+    <hr>
+    <br />
+    <div id="inscription">
+      <h1>Inscription:</h1>
       <form @submit.prevent="inscription">
-        <label>Username:</label>
-        <input type="text" alt="username" />
+        
+        <input type="text" v-model="post.name" placeholder="name" />
         <br />
-        <label>Password:</label>
-        <input type="password" alt="password" />
+        <input type="text" v-model="post.email" placeholder="email" />
         <br />
-        <label>Password:</label>
-        <input type="password" alt="password" />
+        <input type="password" v-model="post.password" placeholder="password" />
+        <br />
+        <input type="password" v-model="post.password_confirmation" placeholder="confirmation" />
         <br />
         <input type="submit" alt="envoyer" />
+        <div id="InscriptionerrorMessage"></div>
       </form>
     </div>
   </div>
@@ -40,19 +41,24 @@ export default {
   },
   methods: {
     login() {
-      let uri = "/api/post/create";
+      let uri = "/api/auth/login";
       this.axios.post(uri, this.post).then(response => {
-        this.$router.push({ name: "posts" }).catch(error => {
+        console.clear();
+        console.log(response.body.access_token);
+        //$window.sessionStorage.accessToken = response.body.access_token;
+        this.$router.push({ name: "home" }).catch(error => {
           console.log("shit happen");
         });
       });
     },
-    inscription() {
-      let uri = "/api/post/create";
+    async inscription(){
+      let uri = "/api/auth/register";
       this.axios.post(uri, this.post).then(response => {
-        this.$router.push({ name: "posts" }).catch(error => {
-          console.log("shit happen");
-        });
+        document.querySelector("#inscription").innerHTML = "Inscription reussie<br /><br /> Vous pouvez vous connecter.";
+        console.log(response);
+      })
+      .catch(error=>{
+        document.querySelector("#InscriptionerrorMessage").innerHTML ="Inscription échouée" + error 
       });
     }
   }
