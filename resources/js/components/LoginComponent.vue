@@ -36,6 +36,7 @@
 <script>
 export default {
   data() {
+    localStorage.clear();
     return {
       post: {}
     };

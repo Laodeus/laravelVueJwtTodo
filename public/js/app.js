@@ -3739,6 +3739,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -4059,6 +4062,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
+    localStorage.clear();
     return {
       post: {}
     };
@@ -62063,6 +62067,19 @@ var render = function() {
                       "router-link",
                       { staticClass: "nav-link", attrs: { to: "/createtodo" } },
                       [_vm._v("Create list")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item active" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "/" } },
+                      [_vm._v("Logout/login")]
                     )
                   ],
                   1

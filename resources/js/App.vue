@@ -22,6 +22,9 @@
           <li class="nav-item active">
             <router-link to="/createtodo" class="nav-link">Create list</router-link>
           </li>
+          <li class="nav-item active">
+            <router-link to="/" class="nav-link">Logout/login</router-link>
+          </li>
         </ul>
       </div>
     </nav>
