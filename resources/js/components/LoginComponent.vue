@@ -8,6 +8,7 @@
         <input type="password" v-model="post.password" placeholder="password" />
         <br />
         <input type="submit" alt="envoyer" />
+        <div id="loginErrorMessage"></div>
       </form>
     </div>
     <br />
@@ -45,9 +46,12 @@ export default {
       this.axios.post(uri, this.post).then(response => {
         console.log(response.headers.authorization);
         localStorage.setItem('accessToken', response.headers.authorization);
+        localStorage.setItem('id', JSON.parse(response.headers.userinfo)[0].id);
         this.$router.push({ name: "home" }).catch(error => {
           console.log("shit happen");
-        });
+        });//
+      }).catch(error=>{
+        document.querySelector("#loginErrorMessage").innerHTML ="Connexion Error."; 
       });
     },
     async inscription(){
@@ -57,7 +61,7 @@ export default {
         console.log(response);
       })
       .catch(error=>{
-        document.querySelector("#InscriptionerrorMessage").innerHTML ="Inscription échouée" + error 
+        document.querySelector("#InscriptionerrorMessage").innerHTML ="Inscription échouée"; 
       });
     }
   }

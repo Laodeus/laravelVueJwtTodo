@@ -1,9 +1,12 @@
 <template>
   <div>
-    <router-link :to="{name:'createList'}" class="btn btn-primary">+</router-link>
+    <router-link :to="{name:'createtodo'}" class="btn btn-primary">+</router-link>
     <div v-for="todo in todos" :key="todo.id">
       <div>
         <h2>{{todo.title}}</h2>
+        <p>{{todo.id}}</p>
+        <router-link :to="{path:'edittodo/'+todo.id}" class="btn btn-primary">Edit</router-link>
+        <button class="btn btn-danger" @click.prevent="deleteTodo(todo.id)">Delete</button>
       </div>
     </div>
   </div>
@@ -16,7 +19,7 @@ export default {
     };
   },
   created() {
-    let uri = "/api/todos/0"; //insert here the id user from the local storage;
+    let uri = `/api/todos/${localStorage.getItem("id")}`; //insert here the id user from the local storage;
     this.axios.get(uri).then(response => {
       this.todos = response.data.data;
     });

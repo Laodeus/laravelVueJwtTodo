@@ -15,7 +15,8 @@ import LoginComponent from './components/LoginComponent.vue';
 import HomeComponent from './components/HomeComponent.vue';
 import CreateProjetComponent from './components/CreateProjetComponent.vue';
 import CreateToDoComponent from './components/CreateToDoComponent.vue';
-
+import EditToDoComponent from './components/EditToDoComponent.vue';
+import CreateTaskComponent from './components/CreateTaskComponent.vue';
 
 const routes = [{
         name: 'login',
@@ -38,6 +39,16 @@ const routes = [{
         name: 'createtodo',
         path: '/createtodo',
         component: CreateToDoComponent
+    },
+    {
+        name: 'edittodo',
+        path: '/edittodo/:id',
+        component: EditToDoComponent
+    },
+    {
+        name: 'createtask',
+        path: '/createtask/:id',
+        component: CreateTaskComponent
     },
 
 ];

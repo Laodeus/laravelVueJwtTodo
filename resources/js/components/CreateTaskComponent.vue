@@ -1,11 +1,14 @@
 <template>
   <div class="container">
     <form @submit.prevent="create">
-      <h1>TO DO:</h1>
+      <h1>Task:</h1>
       <br />
       <label>Titre:</label>
       <br />
-      <input type="text" alt="title" v-model="ToDo.title" />
+      <input type="text" alt="title" v-model="Task.title" />
+      <br />
+      <label>Statut:</label>
+      <input type="text" alt="status" v-model="Task.status" />
       <input type="submit" alt="envoyer" />
     </form>
   </div>
@@ -15,20 +18,20 @@ import { log } from "util";
 export default {
   data() {
     return {
-      ToDo: { idUsername: localStorage.getItem("id") } //Inset here the user id from the local storage
+      Task: { idTodo: this.$route.params.id } //this.$route.params.id
     };
   },
   methods: {
     create() {
-      let uri = "api/todo/store";
+      let uri = "../api/task/store";
       this.axios
-        .post(uri, this.ToDo)
+        .post(uri, this.Task)
         .then(response => {
           //sucess
-          this.$router.push({ name: "home" });
+          this.$router.push({ name: "edittodo" });
         })
         .catch(error => {
-          console.log("Fuck it");
+          console.log("POURQUééééé?!");
         });
     }
   }
