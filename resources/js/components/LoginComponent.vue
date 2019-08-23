@@ -43,9 +43,8 @@ export default {
     login() {
       let uri = "/api/auth/login";
       this.axios.post(uri, this.post).then(response => {
-        console.clear();
-        console.log(response.body.access_token);
-        //$window.sessionStorage.accessToken = response.body.access_token;
+        console.log(response.headers.authorization);
+        localStorage.setItem('accessToken', response.headers.authorization);
         this.$router.push({ name: "home" }).catch(error => {
           console.log("shit happen");
         });

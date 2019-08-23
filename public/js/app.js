@@ -1975,8 +1975,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var uri = "/api/auth/login";
       this.axios.post(uri, this.post).then(function (response) {
-        console.clear();
-        console.log(response.body.access_token); //$window.sessionStorage.accessToken = response.body.access_token;
+        console.log(response.headers.authorization);
+        localStorage.setItem('accessToken', response.headers.authorization);
 
         _this.$router.push({
           name: "home"
