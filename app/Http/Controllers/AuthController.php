@@ -39,7 +39,8 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if ($token = $this->guard()->attempt($credentials)) {
-            return response()->json(['status' => 'success'], 200)->header('Authorization', $token);
+            $secondCredentials = User::where('email', $request->get('email'))->get(['id','email']); // this line get all the field frome the line that match the email
+            return response()->json(['status' => 'success'], 200)->header('Authorization', $token)->header('UserInfo',$secondCredentials);
         }
 
         return response()->json(['error' => 'login_error','request' => $request], 401);
